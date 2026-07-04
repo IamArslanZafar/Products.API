@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Products.API.Requests;
 using Products.Application.Products.Commands.CreateProduct;
-using Products.Application.Products.Queries.GetProducts;
 
 namespace Products.API.Controllers;
 
@@ -32,8 +31,7 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] GetProductsRequest request)
     {
-        var query = GetProductsQuery.FromRequest(request.Colour, request.MinPrice, request.MaxPrice, request.Page, request.PageSize);
-        var response = await _mediator.Send(query);
+        var response = await _mediator.Send(request.ToQuery());
         return Ok(response);
     }
 }
