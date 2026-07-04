@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Products.API.Requests;
 using Products.Application.Products.Commands.CreateProduct;
 using Products.Application.Products.Queries.GetProducts;
 
@@ -29,14 +30,9 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll(
-        [FromQuery] string? colour,
-        [FromQuery] decimal? minPrice,
-        [FromQuery] decimal? maxPrice,
-        [FromQuery] int page = 1,
-        [FromQuery] int pageSize = GetProductsQuery.DefaultPageSize)
+    public async Task<IActionResult> GetAll([FromQuery] GetProductsRequest request)
     {
-        var query = GetProductsQuery.FromRequest(colour, minPrice, maxPrice, page, pageSize);
+        var query = GetProductsQuery.FromRequest(request.Colour, request.MinPrice, request.MaxPrice, request.Page, request.PageSize);
         var response = await _mediator.Send(query);
         return Ok(response);
     }
