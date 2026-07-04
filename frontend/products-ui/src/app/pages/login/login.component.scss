@@ -1,0 +1,284 @@
+$amber: #ffb11f;
+$on-amber: #000000;
+$error: #ff4d4d;
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+}
+
+.page-background {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow: hidden;
+  color: white;
+  // Third-party AI-design-tool asset bucket — swap for a self-hosted image
+  // before deploying this anywhere permanent, it's not an asset we control.
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMYvTOnR57cRVebUS5aFm30WTqM4xe7pRpBUEUrXSMoZQYpzkoifleMS0OT-2iRSp_JssWiHGn_xVlVqwAVPRQDk1m03VDMWYU1UOjn1ikpShTikJEKvZQG7cgWy_7H4nf51teba5jwkolsHsWg5UU_ndSD7y6mP-OcY6IvTJ22IXQ4DE4F3R--ggy0pOnoFo0x2uw9Yod4cHNBNy7KGZcjYupalWSRwy0ntV9TreQDNcBURRsHNSuAA');
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.auth-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 27.5rem;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: $amber;
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.glass-card {
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba($amber, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.6rem 1rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $amber;
+  }
+
+  &.active {
+    background: $amber;
+    color: $on-amber;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: white;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.15s ease;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    &:focus {
+      border-color: $amber;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    &.input-error {
+      border-left: 2px solid $error;
+      border-color: rgba($error, 0.4);
+    }
+  }
+}
+
+.password-wrapper {
+  position: relative;
+
+  input {
+    padding-right: 2.75rem;
+  }
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+
+  &:hover {
+    color: $amber;
+  }
+}
+
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  color: $error;
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -0.75rem;
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: $amber;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.1);
+      text-decoration: underline;
+    }
+  }
+}
+
+.submit-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: none;
+  border-radius: 0.1rem;
+  background: $amber;
+  padding: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: $on-amber;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba($amber, 0.3);
+  transition: filter 0.15s ease;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+  }
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-top-color: $on-amber;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.switch-row {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+
+  span {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  button {
+    margin-left: 0.35rem;
+    border: none;
+    background: none;
+    padding: 0;
+    font-weight: 700;
+    font-family: inherit;
+    font-size: inherit;
+    color: $amber;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+

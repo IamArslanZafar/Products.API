@@ -1,0 +1,137 @@
+$amber: #f5a623;
+$amber-hover: #d98f1b;
+$panel-dark: #1e1e29;
+$border-dark: #313142;
+$text-primary: #f4f4f6;
+$text-secondary: #9a99a8;
+$red-600: #ef4444;
+
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $text-primary;
+  }
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: $text-primary;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.75rem;
+    border: 1px solid $border-dark;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+    color: $text-primary;
+    outline: none;
+    font-family: inherit;
+    transition: all 0.15s ease;
+
+    &::placeholder {
+      color: rgba($text-secondary, 0.6);
+    }
+
+    &:focus {
+      border-color: $amber;
+      box-shadow: 0 0 0 3px rgba($amber, 0.2);
+    }
+  }
+}
+
+.field-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: $red-600;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.cancel-button {
+  flex: 1;
+  border: 1px solid $border-dark;
+  border-radius: 0.75rem;
+  background: transparent;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.submit-button {
+  flex: 1;
+  border: none;
+  border-radius: 0.75rem;
+  background: $amber;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: #1a1206;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: $amber-hover;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

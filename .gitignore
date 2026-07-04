@@ -1,0 +1,22 @@
+# .NET
+bin/
+obj/
+*.user
+
+# Secrets (real values are gitignored — see appsettings.Example.json)
+Products.API/appsettings.json
+Products.API/appsettings.Development.json
+
+# Node / Angular
+frontend/products-ui/node_modules/
+frontend/products-ui/dist/
+frontend/products-ui/.angular/
+
+# IDE
+.vs/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

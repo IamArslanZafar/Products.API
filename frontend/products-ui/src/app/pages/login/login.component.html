@@ -1,0 +1,88 @@
+<div class="page-background">
+  <div class="overlay"></div>
+
+  <main class="auth-main">
+    <div class="brand">
+      <h1>ProductOps</h1>
+      <p>Streamlining product management excellence.</p>
+    </div>
+
+    <div class="glass-card">
+      <div class="tabs">
+        <button type="button" class="tab" [class.active]="mode() === 'login'" (click)="mode.set('login')">Log in</button>
+        <button type="button" class="tab" [class.active]="mode() === 'register'" (click)="mode.set('register')">Register</button>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            placeholder="name@company.com"
+            [class.input-error]="form.controls.email.invalid && form.controls.email.touched"
+          />
+          @if (form.controls.email.invalid && form.controls.email.touched) {
+            <p class="field-error">
+              <span class="material-symbols-outlined">error</span>
+              Please enter a valid email address.
+            </p>
+          }
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input
+              id="password"
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="password"
+              autocomplete="current-password"
+              placeholder="••••••••"
+              [class.input-error]="form.controls.password.invalid && form.controls.password.touched"
+            />
+            <button type="button" class="password-toggle" (click)="togglePasswordVisibility()">
+              <span class="material-symbols-outlined">
+                {{ showPassword() ? 'visibility_off' : 'visibility' }}
+              </span>
+            </button>
+          </div>
+          <!-- @if (form.controls.password.invalid && form.controls.password.touched) {
+            <p class="field-error">
+              <span class="material-symbols-outlined">lock_reset</span>
+              Password must be at least 6 characters.
+            </p>
+          } -->
+        </div>
+
+        @if (mode() === 'login') {
+          <div class="forgot-password">
+            <button type="button">Forgot password?</button>
+          </div>
+        }
+
+        <button type="submit" class="submit-button" [disabled]="isSubmitting()">
+          @if (isSubmitting()) {
+            <span class="spinner"></span>
+            <span>Please wait...</span>
+          } @else {
+            <span>{{ mode() === 'login' ? 'Log in' : 'Create Account' }}</span>
+          }
+        </button>
+
+        <div class="switch-row">
+          @if (mode() === 'login') {
+            <span>Don't have an account?</span>
+            <button type="button" (click)="toggleMode()">Switch to Register</button>
+          } @else {
+            <span>Already have an account?</span>
+            <button type="button" (click)="toggleMode()">Switch to Login</button>
+          }
+        </div>
+      </form>
+    </div>
+
+  </main>
+</div>
