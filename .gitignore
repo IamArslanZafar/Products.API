@@ -4,7 +4,6 @@ obj/
 *.user
 
 # Secrets (real values are gitignored — see appsettings.Example.json)
-Products.API/appsettings.json
 Products.API/appsettings.Development.json
 
 # Node / Angular
