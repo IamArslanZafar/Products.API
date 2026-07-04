@@ -60,7 +60,7 @@ export class LoginComponent {
         this.isSubmitting.set(false);
         this.toastService.success('Account created! Please log in to continue.');
         this.mode.set('login');
-        this.form.patchValue({ password: '' });
+        this.form.reset();
       },
       error: (err: HttpErrorResponse) => {
         this.isSubmitting.set(false);
